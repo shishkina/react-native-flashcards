@@ -18,18 +18,16 @@ const styles = StyleSheet.create({
 })
 
 const Button = (props) => {
-  const { children, onClick, style, textStyle } = props
+  const { children, onClick } = props
 
   return (
-    <TouchableOpacity onPress={onClick} style={[styles.button, style]}>
-      <Text style={[styles.buttonText, textStyle]}>{children}</Text>
+    <TouchableOpacity onPress={onClick} style={styles.button}>
+      <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
   )
 }
 
 // Button.propTypes = {
-//   style: PropTypes.any,
-//   textStyle: PropTypes.any,
 //   children: PropTypes.string.isRequired,
 //   onClick: PropTypes.func.isRequired,
 // }

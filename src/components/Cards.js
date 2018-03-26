@@ -4,11 +4,11 @@ import {
   View,
   Text,
   Animated,
-  Button,
   TouchableOpacity
-} from 'react-native'
+} from 'react-native';
 
 import Card from './Card';
+import Button from './Button';
 
 export default class Cards extends Component {
   constructor() {
@@ -17,6 +17,7 @@ export default class Cards extends Component {
       cards: [],
       currentCard: {},
     }
+    this.getNext = this.getNext.bind(this)
   }
   componentDidMount() {
     Promise.resolve(this.getAllCards()).then(() => (this.getRandomCard()))
@@ -45,10 +46,7 @@ export default class Cards extends Component {
     return (
       <View style={styles.container}>
         <Card currentCard={this.state.currentCard} />
-        <Button
-          onPress={() => this.getNext()}
-          title="NEXT!">
-        </Button>
+        <Button onClick={this.getNext}> Next </Button>
       </View>
     );
   }
@@ -80,80 +78,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import Counter from './Counter'
-// import Button from './Button'
-// const Counters = (props) => {
-//   const {
-//     newCounter,
-//     removeCounter,
-//     countersState: { counters },
-//     decrement,
-//     increment,
-//     incrementWithDelay,
-//   } = props
-//
-//   const counterElems = Object.keys(counters).map((id) => {
-//     const value = counters[id]
-//     return (
-//       <Counter
-//         key={id}
-//         decrementFn={() => decrement(id)}
-//         incrementFn={() => increment(id)}
-//         incrementWithDelayFn={() => incrementWithDelay(id)}
-//         removeCounter={() => removeCounter(id)}
-//         >
-//         {value}
-//       </Counter>
-//     )
-//   })
-//
-//   return (
-//     <View style={styles.container}>
-//       {counterElems}
-//       <Button style={styles.Btn} onClick={newCounter}>Add New Counter</Button>
-//     </View>
-//   )
-// }
-//
-// Counters.propTypes = {
-//   countersState: PropTypes.object.isRequired,
-//   decrement: PropTypes.func.isRequired,
-//   increment: PropTypes.func.isRequired,
-//   incrementWithDelay: PropTypes.func.isRequired,
-//   newCounter: PropTypes.func.isRequired,
-// }
-//
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'flex-start',
-//     alignItems: 'center',
-//     paddingTop: 50,
-//   },
-//   Btn: {
-//     marginTop: 50,
-//   },
-// })
-//
-// export default Counters
